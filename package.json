@@ -1,7 +1,7 @@
 {
   "name": "floating-point",
   "version": "1.0.0",
-  "main": "src/index.ts",
+  "main": "src/index.tsx",
   "repository": "git@github.com:IdEvEbI/floating-point.git",
   "author": "IdevebI <idevebi@163.com>",
   "license": "MIT",
@@ -18,6 +18,8 @@
   ],
   "devDependencies": {
     "@types/jest": "^27.0.3",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
     "clean-webpack-plugin": "^4.0.0",
@@ -25,6 +27,7 @@
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^8.5.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^7.0.0",
     "jest": "^27.4.5",
     "ts-jest": "^27.1.2",
     "ts-loader": "^9.2.6",
@@ -32,12 +35,15 @@
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.6.0",
-    "webpack-merge": "^5.8.0",
-    "husky": "^7.0.0"
+    "webpack-merge": "^5.8.0"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }

@@ -8,5 +8,9 @@
   },
   "extends": [
     "plugin:@typescript-eslint/recommended"
-  ]
+  ],
+  "rules": {
+    "semi": "off",
+    "var-requires": false
+  }
 }
