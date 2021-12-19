@@ -63,8 +63,3 @@ export class DoublePrecisionFloat {
     return result
   }
 }
-// export type NumberInfo = {
-//   
-//   exponentAfterOffset: number       // 编译后的指数值
-// }
-
