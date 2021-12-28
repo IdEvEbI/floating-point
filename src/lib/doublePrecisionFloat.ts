@@ -1,7 +1,7 @@
 /**
- * 双精度浮点数
+ * 双精度浮点数描述类型
  */
-export class DoublePrecisionFloat {
+type DoublePrecisionNumber = {
   /**
    * 双精度字符串 64 位
    */
@@ -30,36 +30,39 @@ export class DoublePrecisionFloat {
   /**
    * 指数值 = exponentBeforeOffset - 1023
    */
-   exponent: number
+  exponent: number
+}
 
-  constructor(num: number) {
-    const bitString = this.to64BitString(num)
+/**
+ * 将 num 转换为 64 为双精度浮点数描述类型
+ * @param num 
+ * @returns 双精度浮点数描述类型
+ */
+export const to64BitDoublePrecision: (num: number) => DoublePrecisionNumber = (num: number) => {
 
-    this.doublePrecisionString = bitString
+  const dv = new DataView(new ArrayBuffer(8))
+  dv.setFloat64(0, num, false)
 
-    this.signString = bitString.substring(0, 1)
-    this.exponentString = bitString.substring(1, 12)
-    this.significandString = bitString.substring(12)
-
-    this.isPositive = this.signString === '0'
-    this.exponentBeforeOffset = parseInt(this.exponentString, 2)
-    this.exponent = this.exponentBeforeOffset - 1023
+  let result = ''
+  for (let i = 0; i < 8; i++) {
+    result += dv.getUint8(i).toString(2).padStart(8, '0')
   }
 
-  /**
-   * 将 num 转换为 64 位双精度浮点数字符串（IEEE 754）
-   * @param num 
-   * @returns 双精度浮点数字符串
-   */
-  to64BitString(num: number) {
-    const dv = new DataView(new ArrayBuffer(8))
-    dv.setFloat64(0, num, false)
-  
-    let result = ''
-    for (let i = 0; i < 8; i++) {
-      result += dv.getUint8(i).toString(2).padStart(8, '0')
-    }
-  
-    return result
+  const doublePrecisionString = result
+  const signString = result.substring(0, 1)
+  const exponentString = result.substring(1, 12)
+  const significandString = result.substring(12)
+  const isPositive = signString === '0'
+  const exponentBeforeOffset = parseInt(exponentString, 2)
+  const exponent = exponentBeforeOffset - 1023
+
+  return {
+    doublePrecisionString,
+    signString,
+    exponentString,
+    significandString,
+    isPositive,
+    exponentBeforeOffset,
+    exponent
   }
 }

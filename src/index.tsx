@@ -1,9 +1,9 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
-import Hello from "./components/Hello"
+import FloatNumberPanel from "./components/FloatNumberPanel"
 
 ReactDOM.render(
-  <Hello name='TypeScript' />,
+  <FloatNumberPanel />,
   document.getElementById('app')
 )
